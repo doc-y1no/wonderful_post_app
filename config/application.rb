@@ -21,6 +21,16 @@ Bundler.require(*Rails.groups)
 
 module WonderfulPostApp
   class Application < Rails::Application
+    config.generators do |g|
+      g.jbuilder false
+      g.javascripts false
+      g.stylesheets false
+      g.helper false
+      g.test_framework false
+<<<<<<< HEAD
+    end
+=======
+>>>>>>> 0d6a9488c1d4ac73c5b354d5a55c658bc0d08e60
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -34,5 +44,5 @@ module WonderfulPostApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    end
   end
-end
