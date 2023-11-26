@@ -27,10 +27,7 @@ module WonderfulPostApp
       g.stylesheets false
       g.helper false
       g.test_framework false
-<<<<<<< HEAD
     end
-=======
->>>>>>> 0d6a9488c1d4ac73c5b354d5a55c658bc0d08e60
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
