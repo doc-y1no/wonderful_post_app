@@ -1,13 +1,14 @@
 class SampleArticlesController < ApplicationController
   before_action :set_sample_article, only: %i[ show edit update destroy ]
-
+  # before_action :set_sample_article, only: [:id, :title, :created_at, :updated_at]
   # GET /sample_articles or /sample_articles.json
   def index
-    @sample_articles = SampleArticle.all
+    @sample_article = SampleArticle.all
   end
 
   # GET /sample_articles/1 or /sample_articles/1.json
   def show
+    @sample_article = SampleArticle.all
   end
 
   # GET /sample_articles/new
@@ -65,6 +66,6 @@ class SampleArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sample_article_params
-      params.require(:sample_article).permit(:title, :content)
+      params.require(:sample_article).permit(:id, :title, :content)
     end
 end
