@@ -13,12 +13,13 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+require_relative 'boot'
+require 'rails/all'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
 module WonderfulPostApp
   class Application < Rails::Application
     config.generators do |g|
@@ -28,6 +29,19 @@ module WonderfulPostApp
       g.helper false
       g.test_framework false
     end
+
+    module Article
+      class Application < Rails::Application
+        config.load_defaults 6.0
+        config.i18n.default_locale = :ja
+        config.time_zone = "Asia/Tokyo"
+
+        #　以下の記述を追記する(設定必須)
+        # デフォルトのlocaleを日本語(:ja)にする
+
+      end
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -40,6 +54,7 @@ module WonderfulPostApp
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+    config.middleware.use ActionDispatch::Flash
     config.generators.system_tests = nil
     end
   end
