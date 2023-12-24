@@ -20,7 +20,6 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-module WonderfulPostApp
   class Application < Rails::Application
     config.generators do |g|
       g.jbuilder false
@@ -29,18 +28,14 @@ module WonderfulPostApp
       g.helper false
       g.test_framework false
     end
-
-    module Article
-      class Application < Rails::Application
-        config.load_defaults 6.0
-        config.i18n.default_locale = :ja
-        config.time_zone = "Asia/Tokyo"
-
-        #　以下の記述を追記する(設定必須)
-        # デフォルトのlocaleを日本語(:ja)にする
-
-      end
-    end
+module Article
+    class Application < Rails::Application
+    config.load_defaults 6.0
+module WonderfulPostApp
+  class Application < Rails::Application
+    config.load_defaults 6.0
+    config.i18n.default_locale = :ja
+    config.time_zone = "Asia/Tokyo"
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
@@ -57,4 +52,7 @@ module WonderfulPostApp
     config.middleware.use ActionDispatch::Flash
     config.generators.system_tests = nil
     end
+    end
+    end
   end
+end
