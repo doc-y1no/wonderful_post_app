@@ -3,7 +3,7 @@
     <div id="error_explanation">
       <h2><%= article.errors.count%> 件の対応が必要です</h2>
       <ul>
-        <% sample_article.errors.each do |error| %>
+        <% article.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
