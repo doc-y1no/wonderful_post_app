@@ -15,10 +15,7 @@ require "action_cable/engine"
 require "sprockets/railtie"
 require_relative 'boot'
 require 'rails/all'
-# require "rails/test_unit/railtie"
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
   class Application < Rails::Application
     config.generators do |g|
@@ -28,6 +25,10 @@ Bundler.require(*Rails.groups)
       g.helper false
       g.test_framework false
     end
+
+
+
+
 module Article
     class Application < Rails::Application
     config.load_defaults 6.0
