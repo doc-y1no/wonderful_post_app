@@ -5,7 +5,11 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.all
+       articles = Article.all
+       articles = articles.where("title LIKE ?", "%#{params[:title]}%") if params[:title].present?
+
+       @articles = articles.page params[:page]
+    # @articles = Article.all.includes(:user).order(created_at: :desc).page(params[:page]) 自分で記載した、kaminari文
   end
 
   def user
@@ -54,5 +58,9 @@ end
 
 def article_params
   params.require(:article).permit(:title, :content)
+end
+
+def partical_article(title)
+  Article.where('title LIKE ?', "%#{title}%")
 end
 end
