@@ -1,8 +1,9 @@
-<p id="notice"><%= notice %></p>
+ <p id="notice"><%= notice %></p>
 
 <h1>記事</h1>
-<%= render partial: "search" %>
-<%= paginate @articles, theme: 'twitter-bootstrap-4' %>
+ <%= render partial: "search" %>
+ <%= paginate @articles %>
+ <table class="table">
   <thead>
     <tr>
       <th scope="col">タイトル</th>
@@ -12,12 +13,18 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td class="hstack gap-3">
-          <%= link_to '詳細', article, class: "btn btn-success mr-1" %>
-        </td>
+       <td>
+         <%= article.title %>
+         <% article.tags.each do |tag| %>
+           <span class="badge rounded-pill bg-primary"><%= tag.name%></span>
+         <% end %>
+       </td>
+
+       <td ><%= article.content %></td>
+       <td>
+          <%= link_to '詳細', article, class: "btn btn-success" %>
+       </td>
       </tr>
     <% end %>
   </tbody>
-</table>
+ </table>

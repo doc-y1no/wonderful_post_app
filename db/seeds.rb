@@ -11,6 +11,9 @@
 #     - パスワード: "test1234"
 
 #     大量生産方法
+#tag　seed追記
+tags = %w(学習 転職活動 豆知識 その他)
+tags.each { |tag| Tag.find_or_create_by!(name: tag) }
 
   3.times do |n|
   n += 1
@@ -31,6 +34,7 @@
       i += 1
       user.articles.find_or_create_by!(title: "No#{i}:user00#{n}の記事") do |article|
         article.content = "No#{i}:user#{n}の記事の本文"
+        article.tag_ids = Tag.all.pluck(:id)
     end
   end
 end
